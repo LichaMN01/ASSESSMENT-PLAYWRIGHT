@@ -13,20 +13,19 @@ export class PIMPage {
   constructor(readonly page: Page) {
 
     this.page = page;
-    this.PIMLink = page.locator('a.oxd-main-menu-item[href*="/pim/viewPimModule"]');
+    this.PIMLink = page.getByRole('link', { name: 'PIM' });
     this.PimReportLink = page.getByText("Reports");
     this.seachReportInput = page.locator("//input[@placeholder='Type for hints...']");
     this.seachReportButton = page.locator("//button[@type='submit']");
     this.PimEmpLink = page.getByText("Employee List");
     this.EmpList = page.locator('a.oxd-table orangehrm-employee-list');
-    this.searchEmpIdinput = page.locator(
-        "//label[text()='Employee Id']/ancestor::div[contains(@class,'oxd-input-group')]//input"
-    );
+    this.searchEmpIdinput = page.locator('.oxd-input-group:has-text("Employee Id") input');
+   // this.searchEmpIdinput = page.locator("//label[text()='Employee Id']/ancestor::div[contains(@class,'oxd-input-group')]//input");
     this.searchEmpButton = page.locator("//button[@type='submit']");
   }
 
   async verifyEmp(id: string): Promise<void> {
-    console.log("ID RECIBIDO EN verifyEmp:", id);
+  //  console.log("ID RECIBIDO EN verifyEmp:", id);
 
    // await expect(this.searchEmpIdinput).toBeVisible();
     await this.searchEmpIdinput.fill(id);

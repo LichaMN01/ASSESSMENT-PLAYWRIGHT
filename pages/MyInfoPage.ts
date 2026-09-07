@@ -13,7 +13,7 @@ private readonly saveButton: Locator;
 
 
   constructor(readonly page: Page) {
-    this.myInfoLink = page.locator('a.oxd-main-menu-item[href*="/pim/viewMyDetails"]');
+    this.myInfoLink = page.getByRole('link', { name: 'My Info' });
     this.downloadButton = page.locator('button.oxd-icon-button:has(i.bi-download)');
     this.saveButton = page.getByText("Save", { exact: true });
     this.firstName = page.getByPlaceholder('First Name');   

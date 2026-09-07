@@ -11,7 +11,7 @@ export class BuzzPage {
 
   constructor(readonly page: Page) {
     this.page = page;
-    this.buzzLink = page.locator('a[href="/orangehrm-5.7/web/index.php/buzz/viewBuzz"]');
+    this.buzzLink = page.getByRole('link', { name: 'Buzz' });
     this.buzzPost = page.locator(".orangehrm-buzz-post").first();
     this.postMenuButton = this.buzzPost.locator(".orangehrm-buzz-post-header-config button");
     this.deletepostButton = page.getByText("Delete Post", { exact: true });

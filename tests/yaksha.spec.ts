@@ -113,9 +113,9 @@ async function VerifyGetEmplist(page: Page) {
 
 // verify function for TS-4-1
 async function verifyVerEmp1(page: Page) {
-    await page.locator("//span[text()='PIM']").click();
-    await page.locator("//a[text()='Employee List']").click();
-    await page.waitForTimeout(4000);
+    await page.locator("//span[text()='PIM']").dblclick();
+    await page.locator("//a[text()='Employee List']").dblclick();
+    await page.waitForTimeout(10000);
     const list1 = await page
     .locator("div.oxd-table-body div.oxd-table-row div:nth-child(2)")
     .allInnerTexts();

@@ -17,16 +17,12 @@ private readonly saveLanguageButton: Locator;
   constructor(readonly page: Page) {
 
     this.page = page;
-    this.adminLink = page.locator('a[href="/orangehrm-5.7/web/index.php/admin/viewAdminModule"]');
+    this.adminLink = page.getByRole('link', { name: 'Admin' });
     this.corporateBrandingLink = page.getByText("Corporate Branding", { exact: true });
-    this.primaryColorLink = page.locator(
-    "div.oxd-color-input.oxd-color-input--active"
-).first();
-    this.hexInput = page.locator(
-    "//div[contains(@class,'oxd-color-picker')]//label[text()='HEX']/following-sibling::input"
-);
+    this.primaryColorLink = page.locator("div.oxd-color-input.oxd-color-input--active").first();
+    this.hexInput = page.locator('.oxd-color-picker input').last();
     this.publishButton = page.getByText("Publish", { exact: true });
-    this.clientLogoBrowser = page.locator("//label[text()='Client Logo']/ancestor::div[contains(@class,'oxd-input-group')]//input[@type='file']");
+    this.clientLogoBrowser = page.locator('input[type="file"]').first();
     this.configurationLink = page.getByText("Configuration", { exact: true });
     this.localizationLink = page.getByText("Localization", { exact: true });
     this.languageDropdown = page.locator("i.oxd-select-text--arrow").first();

@@ -11,7 +11,7 @@ export class LeavePage {
 
   constructor(readonly page: Page) {
     this.page = page;
-    this.LeaveLink = page.locator('a.oxd-main-menu-item[href*="/leave/viewLeaveModule"]');
+    this.LeaveLink = page.getByRole('link', { name: 'Leave' });
     this.assignLeaveLink = page.getByText("Assign Leave");
     this.assignButton = page.getByText("Assign", { exact: true });
 

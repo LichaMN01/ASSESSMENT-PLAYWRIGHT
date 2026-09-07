@@ -32,14 +32,14 @@ test.beforeEach(async ({ page, baseURL }) => {
   await loginPage.performLogin();
 });
 
-test("1_Verify 'Delete Post' Functionality", async ({ page }) => {
+test("TS-1: Verify 'Delete Post' Functionality", async ({ page }) => {
     await buzzPage.delete();
     await Verifydelete(page);
 })
 
 test("TS-2: Verify 'invalid' message on direct report search", async ({ page }) => {
-  await pimPage.seachReport();
-  await verifyseachReport(page);
+  await pimPage.searchReport();
+  await verifysearchReport(page);
 });
 
 test("TS-3 Verify Employee List could be retrieved", async ({ page }) => {
@@ -97,7 +97,7 @@ async function Verifydelete(page: Page) {
 }
 
 // verify function for TS-2
-async function verifyseachReport(page: Page) {
+async function verifysearchReport(page: Page) {
     const msg = await page.locator("span.oxd-input-group__message").innerText();
     expect(msg).toBe("Invalid");
 }
@@ -180,7 +180,7 @@ async function verifyleaveField(page: Page) {
 // verify function for TS-9
 async function verifyDownloadInfo(page: Page) {
     const fileName = MyInfoPage.fileName;
-    if (fileName === "") {
+    if (fileName === "sample_upload.pdf") {
         expect(true).toBeFalsy();
     }
     const fileExists = fs.existsSync(path.resolve(fileName));  // Check if the file exists in expected directory

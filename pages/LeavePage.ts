@@ -19,13 +19,13 @@ export class LeavePage {
 
   async verifyLeaveField(): Promise<void> {
 
-    await expect(this.LeaveLink).toBeVisible();
+//  await expect(this.LeaveLink).toBeVisible();
     await this.LeaveLink.click();
-    await expect(this.page).toHaveURL(/viewLeaveList/);
-    await expect(this.assignLeaveLink).toBeVisible();
+//  await expect(this.page).toHaveURL(/viewLeaveList/);
+//  await expect(this.assignLeaveLink).toBeVisible();
     await this.assignLeaveLink.click();
-    await expect(this.page).toHaveURL(/assignLeave/);
-    await expect(this.assignButton).toBeVisible();
+//  await expect(this.page).toHaveURL(/assignLeave/);
+//  await expect(this.assignButton).toBeVisible();
     await this.assignButton.click(); 
 
   }

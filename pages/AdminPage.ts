@@ -38,30 +38,28 @@ private readonly saveLanguageButton: Locator;
   async primaryColor(): Promise<void> {
 
     await this.adminLink.click();
-    await(this.page).waitForURL(/admin/); // Esperar a que la URL contenga "admin"
+//  await(this.page).waitForURL(/admin/); // Esperar a que la URL contenga "admin"
     await this.corporateBrandingLink.click();
-    await(this.page).waitForURL(/addTheme/); // Esperar a que la URL contenga "addTheme"
-    await this.primaryColorLink.waitFor({ state: "visible" }); // Esperar a que el elemento sea visible
+//  await(this.page).waitForURL(/addTheme/); // Esperar a que la URL contenga "addTheme"
+//  await this.primaryColorLink.waitFor({ state: "visible" }); // Esperar a que el elemento sea visible
     await this.primaryColorLink.click();
-    await this.hexInput.waitFor({ state: "visible" }); // Esperar a que el elemento sea visible
+//  await this.hexInput.waitFor({ state: "visible" }); // Esperar a que el elemento sea visible
     await this.hexInput.fill("#826137");
-    await this.publishButton.waitFor({ state: "visible" }); // Esperar a que el elemento sea visible
+//    await this.publishButton.waitFor({ state: "visible" }); // Esperar a que el elemento sea visible
     await this.publishButton.click();
-    await this.page.waitForTimeout(2000); // Esperar 2 segundos para que se aplique el cambio
-    await this.languageDropdown.waitFor({ state: "visible" }); // Esperar a que el elemento sea visible
-    await this.languageDropdown.click();
-
+//  await this.page.waitForTimeout(2000); // Esperar 2 segundos para que se aplique el cambio
+  
 
   }
   async companyLogo(): Promise<void> {
 
    await this.adminLink.click();
-   await(this.page).waitForURL(/admin/);
+//   await(this.page).waitForURL(/admin/);
    await this.corporateBrandingLink.click();
-   await(this.page).waitForURL(/addTheme/);
-   await this.clientLogoBrowser.setInputFiles("tests/fixtures/file_example_JPG_2500kB.jpg");
-   await this.publishButton.waitFor({ state: "visible" });
-   await this.page.waitForTimeout(2000); // Esperar 2 segundos para que se aplique el cambio
+//   await(this.page).waitForURL(/addTheme/);
+   await this.clientLogoBrowser.setInputFiles("tests/fixtures/file_example_JPG_2500kB.jpg"); // Cambia la ruta al archivo que deseas subir
+//  
+// await this.page.waitForTimeout(2000); // Esperar 2 segundos para que se aplique el cambio
 
 
   }
@@ -70,16 +68,16 @@ private readonly saveLanguageButton: Locator;
   async changeLanguage(): Promise<void> {
 
    await this.adminLink.click();
-   await(this.page).waitForURL(/admin/);
+// await(this.page).waitForURL(/admin/);
    await this.configurationLink.click();   
-   await(this.page).waitForTimeout(1000);
-   await this.localizationLink.waitFor({ state: "visible" });
+// await(this.page).waitForTimeout(1000);
+// await this.localizationLink.waitFor({ state: "visible" });
    await this.localizationLink.click();
-   await this.languageDropdown.waitFor({ state: "visible" });
+// await this.languageDropdown.waitFor({ state: "visible" });
    await this.languageDropdown.click();
-   await this.page.getByText("Chinese (Traditional, Taiwan)", { exact: false }).waitFor({ state: "visible" });
+// await this.page.getByText("Chinese (Traditional, Taiwan)", { exact: false }).waitFor({ state: "visible" });
    await this.page.getByText("Chinese (Traditional, Taiwan)", { exact: false }).click();
-   await this.page.waitForTimeout(2000);
+// await this.page.waitForTimeout(2000);
    
 
   }

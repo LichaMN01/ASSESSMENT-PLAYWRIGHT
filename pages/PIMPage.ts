@@ -39,9 +39,9 @@ export class PIMPage {
 
   async getEmpList(): Promise<void> {
  // await expect(this.PIMLink).toBeVisible();
-  await this.PIMLink.dblclick();
- // await this.page.waitForTimeout(1000);   
-  await this.PimEmpLink.dblclick();
+  await this.PIMLink.click();
+ await this.page.waitForTimeout(1000);   
+  await this.PimEmpLink.click();
   await this.page.waitForTimeout(10000);
  // await expect(this.page).toHaveURL(/viewEmployeeList/);
   }
@@ -50,14 +50,14 @@ export class PIMPage {
   async searchReport(): Promise<void> {
     
   //  await expect(this.PIMLink).toBeVisible();
-    await this.PIMLink.dblclick();
+    await this.PIMLink.click();
  //   await this.page.waitForTimeout(1000); // Wait for 1 second to ensure the page has loaded
  //   await expect(this.page).toHaveURL(/pim/); // Verify that the URL contains "pim"
-    await this.PimReportLink.dblclick();
+    await this.PimReportLink.click();
  //   await this.page.waitForTimeout(1000);
  //   await expect(this.page).toHaveURL(/viewDefinedPredefinedReports/); // Verify that the URL contains "viewEmployeeList"
     await this.seachReportInput.fill('invalid');
-    await this.seachReportButton.dblclick();
+    await this.seachReportButton.click();
   }
 
 

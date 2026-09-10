@@ -23,7 +23,7 @@ export class BuzzPage {
 
   async delete(): Promise<void> {
 
-    await this.buzzLink.dblclick();
+    await this.buzzLink.click();
    // await expect(this.page).toHaveURL(/buzz/); // Verify that the URL contains "buzz"
     await this.buzzPost.waitFor({ state: "visible" });
     await this.postMenuButton.click();

@@ -22,7 +22,9 @@ test.describe("Yaksha", () => {
     let pimPage: PIMPage;
 
 test.beforeEach(async ({ page, baseURL }) => {
-  await page.goto("https://yakshahrm.makemylabs.in/orangehrm-5.7");
+  await page.goto("https://yakshahrm.makemylabs.in/orangehrm-5.7/web/index.php/auth/login", {
+    waitUntil: "domcontentloaded",
+  });
   loginPage = new LoginPage(page);
   myInfoPage = new MyInfoPage(page);
   adminPage = new AdminPage(page);
@@ -105,8 +107,8 @@ async function verifysearchReport(page: Page) {
 // verify function for TS-3
 async function VerifyGetEmplist(page: Page) {
     const actualEmplListElement = await page.locator("div.oxd-table-row");
-    const employeeCount = await actualEmplListElement.count();
     await expect(actualEmplListElement.first()).toBeVisible();
+    const employeeCount = await actualEmplListElement.count();
     expect(employeeCount).toBeGreaterThan(1);
     console.log(`Employee list retrieved successfully: ${employeeCount}`);
 }

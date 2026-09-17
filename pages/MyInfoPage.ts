@@ -15,7 +15,7 @@ private readonly saveButton: Locator;
   constructor(readonly page: Page) {
     this.myInfoLink = page.getByRole('link', { name: 'My Info' });
     this.downloadButton = page.locator('button.oxd-icon-button:has(i.bi-download)');
-    this.saveButton = page.getByText("Save", { exact: true });
+    this.saveButton = page.getByText("Save", { exact: true }).first();
     this.firstName = page.getByPlaceholder('First Name');   
     this.middleName = page.getByPlaceholder('Middle Name');
     this.lastName = page.getByPlaceholder('Last Name');

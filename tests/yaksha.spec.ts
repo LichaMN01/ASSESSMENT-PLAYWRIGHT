@@ -22,16 +22,31 @@ test.describe("Yaksha", () => {
     let pimPage: PIMPage;
 
 test.beforeEach(async ({ page, baseURL }) => {
-  await page.goto("https://yakshahrm.makemylabs.in/orangehrm-5.7/web/index.php/auth/login", {
-    waitUntil: "domcontentloaded",
+  await page.goto("https://yakshahrm.makemylabs.in/orangehrm-5.7",
+    {
+      waitUntil: 'commit',
+      timeout: 60000,
+      
+    }
+  
+  );
+  await page.reload({
+    waitUntil: "commit",
+    timeout: 60000,
   });
+  
+
+
+console.log('URL:', page.url());
+console.log('TITLE:', await page.title());
+
   loginPage = new LoginPage(page);
   myInfoPage = new MyInfoPage(page);
   adminPage = new AdminPage(page);
   leavePage = new LeavePage(page);
   buzzPage = new BuzzPage(page);
   pimPage = new PIMPage(page);
-  await loginPage.performLogin();
+ //wait loginPage.performLogin();
 });
 
 test("TS-1: Verify 'Delete Post' Functionality", async ({ page }) => {
@@ -115,7 +130,7 @@ async function VerifyGetEmplist(page: Page) {
 
 // verify function for TS-4-1
 async function verifyVerEmp1(page: Page) {
-    await page.locator("//span[text()='PIM']").dblclick();
+    await page.locator("//span[text()='PIM']").click();
     await page.locator("//a[text()='Employee List']").dblclick();
     await page.waitForTimeout(10000);
     const list1 = await page

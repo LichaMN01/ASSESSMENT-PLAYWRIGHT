@@ -9,5 +9,5 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["pages/**/*.ts", "tests/**/*.ts"]
+  "include": ["pages/**/*.ts", "tests/**/*.ts", "playwright.config.ts"]
 }

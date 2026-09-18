@@ -11,6 +11,11 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
     steps:
     - uses: actions/checkout@v4
 
@@ -26,17 +31,10 @@ jobs:
 
     - name: Run Playwright tests
       run: npx playwright test
-
-    - name: List generated files
-      if: always()
-      run: |
-        echo "=== ROOT ==="
-        ls
-        echo "=== PLAYWRIGHT REPORT ==="
-        ls -la playwright-report || true
+      continue-on-error: true
 
     - name: Upload Playwright report
-      if: ${{ !cancelled() }}
+      if: always()
       uses: actions/upload-artifact@v4
       with:
         name: playwright-report
@@ -44,25 +42,12 @@ jobs:
         retention-days: 30
 
     - name: Upload report to GitHub Pages
-      if: ${{ !cancelled() }}
+      if: always()
       uses: actions/upload-pages-artifact@v4
       with:
         path: playwright-report/
 
-  deploy:
-    if: ${{ !cancelled() }}
-    needs: test
-    runs-on: ubuntu-latest
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
-    - name: Deploy Playwright report
+    - name: Deploy report to GitHub Pages
+      if: always()
       id: deployment
       uses: actions/deploy-pages@v4

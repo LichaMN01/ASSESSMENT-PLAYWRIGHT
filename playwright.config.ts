@@ -15,6 +15,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 60_000,
   /* Run tests in files in parallel */
+  globalSetup: './global-setup.ts',
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
@@ -35,10 +36,7 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
  projects: [
-  {
-    name: 'setup',
-    testMatch: /auth\.setup\.ts/,
-  },
+
 
   {
     name: 'chromium',
@@ -46,7 +44,7 @@ export default defineConfig({
       ...devices['Desktop Chrome'],
       storageState: 'playwright/.auth/user.json',
     },
-    dependencies: ['setup'],
+   
   },
 
     

@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+//import { test, expect } from "@playwright/test";
 import { Page } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
 import { AdminPage } from "../pages/AdminPage";
@@ -9,6 +9,7 @@ import { PIMPage } from "../pages/PIMPage";
 import * as fs from "fs";
 import * as path from "path";
 import { verify, Verify } from "crypto";
+import { test, expect } from "../tests/fixtures/tests";
 
 const data = JSON.parse(JSON.stringify(require("../Data/testData.json")));
 let id: any
